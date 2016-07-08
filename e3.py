@@ -1254,6 +1254,7 @@ dCdFLtBQPtFQuCdKOrpndJNUFQIDSbetUKylhSUjcDVtbiQrWMRQhAwGUZyPneCGUjGBBTkLqxLAXXtB
 KfErkDaWMFZZeuqDmXKJEGHyToPUhPphfVhgUZgbIuRAtWnroImpJKqqmEZqeNQCKzhjIkKQHURWLXFw
 PBuijeoTSpsVLaOGuLVjMZXkBvVXwUuHfBihziiavGSYofPNeKsTXruMUumRRPQJzvSzJkKbtSipiqBd"""
 
+''' 我的实现，有点复杂
 def isLowerLetter(c):
   asc_a = ord('a')
   asc_z = ord('z')
@@ -1305,3 +1306,23 @@ for c in list(s):
     T = 1
 
 print(''.join(temp))
+'''
+
+# 参考答案
+filt = [''] * 9
+answer = ""
+for c in s:
+  del filt[0]
+  filt.append(c)
+  if filt[0].islower() and \
+     filt[1].isupper() and \
+     filt[2].isupper() and \
+     filt[3].isupper() and \
+     filt[4].islower() and \
+     filt[5].isupper() and \
+     filt[6].isupper() and \
+     filt[7].isupper() and \
+     filt[8].islower():
+     answer += filt[4]
+
+print(answer)
