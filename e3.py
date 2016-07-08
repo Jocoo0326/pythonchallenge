@@ -1277,30 +1277,31 @@ center = ''
 left = 0
 right = 0
 temp = []
+dump = []
 for c in list(s):
   T += 1
-  if T < 4 and isUpperLetter(c):
+  if (T in range(2, 5)) and isUpperLetter(c):
     left += 1
 
-  if T > 4 and isUpperLetter(c):
+  if (T in range(6, 9)) and isUpperLetter(c):
     right += 1
 
-  if T == 4 and isLowerLetter(c):
+  if T == 5 and isLowerLetter(c):
     center = c
 
-  if ((T in range(1, 4)) and left < T) or ((T in range(5, 8)) and right < (T -
-    4)) or (T == 4 and
-      not(isLowerLetter(c))):
+  if (T == 1 and not(isLowerLetter(c))) or ((T in range(2, 5)) and left < T - 1) or (T == 5 and not(isLowerLetter(c))) or ((T in range(6, 9)) and right < (T - 5)) or (T == 9 and not(isLowerLetter(c))):
     T = 0
+    if isLowerLetter(c):
+      T = 1
     left = 0
     right = 0
     continue
 
-  if T == 7:
+  if T == 9:
     temp.append(center)
-    left = 3
+    left = 0
     right = 0
     center = ''
-    T = 3
+    T = 1
 
 print(''.join(temp))
